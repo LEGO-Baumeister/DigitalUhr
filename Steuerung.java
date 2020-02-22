@@ -6,25 +6,14 @@
  * @version 22.02.20
  */
 public class Steuerung
-{   
-    private Zaehler sekunden = new Zaehler();
-    private Zaehler minuten = new Zaehler();
-    private Zaehler stunden = new Zaehler();
-
-    private int sekunde = 60;
-    private int minute = 60;
-    private int stunde = 24;
+{
+    private static Zaehler sekZaehler = new Zaehler(60);
+    //private static Zaehler minZaehler = new Zaehler(60);
+    //private static Zaehler hZaehler = new Zaehler(24);
     
-    private int zaehlenSekunden() {
-        return sekunden.zaehlen(sekunde, 50);
-        /*minuten.zaehlen(minute, 50);
-        stunden.zaehlen(stunde, 50);*/
-    }
-
-    public void umschlagen() {
-        zaehlenSekunden();
-        if(zaehlenSekunden() == sekunde -1) {
-            System.out.println("Max erreicht");
-        }
+    public static void main(String[] args) {
+       if(sekZaehler.getZeitWert() == sekZaehler.getZaehlenBis()) {
+           Zaehler minZaehler = new Zaehler(60);
+       }
     }
 }
