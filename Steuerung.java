@@ -1,13 +1,30 @@
 
 /**
- * Write a description of class Steuerung here.
+ * Steuert die Zähler und später die Anzeigen
  *
- * @author (your name)
- * @version (a version number or a date)
+ * @author Lukas Breuer
+ * @version 22.02.20
  */
 public class Steuerung
 {   
-    Zaehler sekunden = new Zaehler(60);
-    Zaehler minuten = new Zaehler(60);
-    Zaehler stunden = new Zaehler(24);
+    private Zaehler sekunden = new Zaehler();
+    private Zaehler minuten = new Zaehler();
+    private Zaehler stunden = new Zaehler();
+
+    private int sekunde = 60;
+    private int minute = 60;
+    private int stunde = 24;
+    
+    private int zaehlenSekunden() {
+        return sekunden.zaehlen(sekunde, 50);
+        /*minuten.zaehlen(minute, 50);
+        stunden.zaehlen(stunde, 50);*/
+    }
+
+    public void umschlagen() {
+        zaehlenSekunden();
+        if(zaehlenSekunden() == sekunde -1) {
+            System.out.println("Max erreicht");
+        }
+    }
 }
