@@ -1,67 +1,64 @@
-import java.lang.*;
 /**
  * Zählt bis zu einer bestimmten Zahl.
  *
  * @author Lukas Breuer
- * @version 17.02.2020
+ * @version 02.03.2020
  */
 public class Zaehler
 {
     private int zeitWert;
+    private String zeitString;
     private int zaehlenBis;
-    private int delay;
-    
+    private long delay;
+
     public Zaehler(int zaehlenBis) {
-    zeitWert = 0;
-    delay = 250;
-    this.zaehlenBis = zaehlenBis;
-    this.delay = delay;
-    zaehlen(zaehlenBis, delay);
+        this.zaehlenBis = zaehlenBis;
+        zeitWert = -1;
+        delay = 1;
+        zaehlen();
     }
-    
-    public void reset() {
-        setZeitWert(0);
-        zaehlen(zaehlenBis, delay);
-    }
-    
-    public void sleep(long delay) {
-    try {
-        Thread.sleep(delay);
-    } catch (InterruptedException e) {
-        e.printStackTrace();
-    }
-    }
-    
-    private void zeitAnzeige() {
-        
-    }
-    
-    
-    public int zaehlen(int zaehlenBis, long delay) {
-        
-        for(int i = zeitWert; i <= zaehlenBis - 1; i++) {
-            if(i < 10) {
-                //System.out.println("0" + i);
-            } else
-               // System.out.println(i);
-            sleep(delay);
-            if(i == zaehlenBis -1) {
-                    reset();
-            }
+
+    public void sleep(long millis) {
+        try {
+            Thread.sleep(millis);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
         }
-        return zeitWert;
+    }
+
+    public void zaehlen() {
+        if(zeitWert + 1 < zaehlenBis) {
+            sleep(delay);
+            zeitWert++;
+        } else {
+            sleep(delay);
+            zeitWert = 0;
+        }
+
     }
     
+    public void formattierung() {
+        if(zeitWert < 10) {
+            zeitString = "0" + Integer.toString(zeitWert);
+        } else {
+            zeitString = Integer.toString(zeitWert);
+        }
+    }
+    
+    public String getZeitString() {
+        return zeitString;
+    }
     
     public int getZeitWert() {
         return zeitWert;
     }
-    
+
     public void setZeitWert(int zeitWert) {
         this.zeitWert = zeitWert;
     }
-    
+
     public int getZaehlenBis() {
         return zaehlenBis;
     }
+
 }
