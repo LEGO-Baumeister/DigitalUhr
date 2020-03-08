@@ -26,7 +26,7 @@ public class SegmentAnzeige
     {
         positionieren();
         wertDerStelle(65);
-        anzeigen(1);
+        anzeigen(0);
     }
 
     private void positionieren() {
@@ -68,7 +68,7 @@ public class SegmentAnzeige
         System.out.println(stelle2);
     }
 
-    private void anzeigen(int wert) {
+    public void anzeigen(int wert) {
         switch(wert) {
             case 0:
                 oMitte.sichtbarMachen();
@@ -91,16 +91,20 @@ public class SegmentAnzeige
             case 2:
                 oMitte.sichtbarMachen();
                 oRechts.sichtbarMachen();
+                oLinks.unsichtbarMachen();
                 mMitte.sichtbarMachen();
                 uLinks.sichtbarMachen();
                 uMitte.sichtbarMachen();
+                uRechts.unsichtbarMachen();
                 break;
             case 3:
                 oMitte.sichtbarMachen();
                 oRechts.sichtbarMachen();
+                oLinks.unsichtbarMachen();
                 mMitte.sichtbarMachen();
-                uRechts.sichtbarMachen();
+                uLinks.unsichtbarMachen();
                 uMitte.sichtbarMachen();
+                uRechts.sichtbarMachen();
                 break;
             case 4:
                 oMitte.unsichtbarMachen();
