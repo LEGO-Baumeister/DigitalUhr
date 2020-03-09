@@ -52,7 +52,7 @@ public class Leinwand
     if (leinwandSingleton == null)
     {
       leinwandSingleton =
-        new Leinwand("Ball-Simulation", 1280, 720, Color.black);
+        new Leinwand("DigitalUhr", 1280, 720, Color.black);
     }
     leinwandSingleton.setzeSichtbarkeit(true);
     return leinwandSingleton;

@@ -14,7 +14,7 @@ public class Zaehler
     public Zaehler(int zaehlenBis) {
         this.zaehlenBis = zaehlenBis;
         zeitWert = -1;
-        delay = 1;
+        delay = 100;
         zaehlen();
     }
 

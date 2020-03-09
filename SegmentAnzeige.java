@@ -1,18 +1,17 @@
-
 /**
  * Write a description of class SegmentAnzeige here.
  *
  * @author Lukas Breuer
- * @version 04.03.2020
+ * @version 09.03.2020
  */
 public class SegmentAnzeige
 {   
-    private int hoehe = 80;
-    private int breite = 20;
+    private static int hoehe = 100;
+    private static int breite = 20;
+    private static int segmentBreite = 2*breite + hoehe;
     private int abstandX = 40;
     private int abstandY = 40;
-    private int stelle1;
-    private int stelle2;
+    private int xVerschiebung;
 
     private Rechteck oMitte = new Rechteck();
     private Rechteck oRechts = new Rechteck();
@@ -22,14 +21,13 @@ public class SegmentAnzeige
     private Rechteck uRechts = new Rechteck();
     private Rechteck uMitte = new Rechteck();
 
-    public SegmentAnzeige()
-    {
-        positionieren();
-        wertDerStelle(65);
-        anzeigen(0);
+    public SegmentAnzeige(int xVerschiebung)
+    {   
+        this.xVerschiebung = xVerschiebung;
+        positionieren(xVerschiebung);
     }
 
-    private void positionieren() {
+    private void positionieren(int xVerschiebung) {
 
         //Groessen
         oMitte.groesseAendern(hoehe, breite);
@@ -41,13 +39,13 @@ public class SegmentAnzeige
         uRechts.groesseAendern(breite, hoehe);
 
         //Positionen
-        oMitte.positionAendern(abstandX + breite, abstandY);
-        oRechts.positionAendern(abstandX + hoehe + breite, abstandY + breite);
-        oLinks.positionAendern(abstandX, abstandY + breite);
-        mMitte.positionAendern(abstandX + breite, abstandY + hoehe + breite);
-        uLinks.positionAendern(abstandX, abstandY + breite + hoehe + breite);
-        uMitte.positionAendern(abstandX + breite, abstandY + breite + hoehe + breite + hoehe);
-        uRechts.positionAendern(abstandX + hoehe + breite, abstandY + breite + hoehe + breite);
+        oMitte.positionAendern(abstandX + breite + xVerschiebung, abstandY);
+        oRechts.positionAendern(abstandX + hoehe + breite + xVerschiebung, abstandY + breite);
+        oLinks.positionAendern(abstandX + xVerschiebung, abstandY + breite);
+        mMitte.positionAendern(abstandX + breite + xVerschiebung, abstandY + hoehe + breite);
+        uLinks.positionAendern(abstandX + xVerschiebung, abstandY + breite + hoehe + breite);
+        uMitte.positionAendern(abstandX + breite + xVerschiebung, abstandY + breite + hoehe + breite + hoehe);
+        uRechts.positionAendern(abstandX + hoehe + breite + xVerschiebung, abstandY + breite + hoehe + breite);
 
         //test
         /*
@@ -59,13 +57,6 @@ public class SegmentAnzeige
         uMitte.sichtbarMachen();
         uRechts.sichtbarMachen();
         */
-    }
-
-    private void wertDerStelle(int nummer) {
-        stelle1 = (nummer / 10) % 10;
-        stelle2 = nummer % 10;
-        System.out.println(stelle1);
-        System.out.println(stelle2);
     }
 
     public void anzeigen(int wert) {
@@ -170,8 +161,26 @@ public class SegmentAnzeige
                 uRechts.unsichtbarMachen();
         }
     }
+    
+    public void unsichtbatMachen() {
+        oMitte.unsichtbarMachen();
+                oRechts.unsichtbarMachen();
+                oLinks.unsichtbarMachen();
+                mMitte.unsichtbarMachen();
+                uLinks.unsichtbarMachen();
+                uMitte.unsichtbarMachen();
+                uRechts.unsichtbarMachen();
+    }
+    
+    public static int getSegmentBreite() {
+        return segmentBreite;
+    }
+    
+    public static int getHoehe() {
+        return hoehe;
+    }
+    
+    public static int getBreite() {
+        return breite;
+    }
 }
-
-
-
-
