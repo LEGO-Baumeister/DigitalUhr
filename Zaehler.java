@@ -14,7 +14,7 @@ public class Zaehler
     public Zaehler(int zaehlenBis) {
         this.zaehlenBis = zaehlenBis;
         zeitWert = -1;
-        delay = 100;
+        delay = 10;
         zaehlen();
     }
 
@@ -22,7 +22,7 @@ public class Zaehler
         try {
             Thread.sleep(millis);
         } catch (InterruptedException e) {
-            e.printStackTrace();
+            System.err.println("Thread interrupted");
         }
     }
 
